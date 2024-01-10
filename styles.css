@@ -16,7 +16,6 @@ body {
 }
 
 footer {
-    width: 100%;
     display: flex;
     background-color: #4d626f;
     align-items: center;
@@ -46,3 +45,22 @@ footer {
     font-size: 500px;
 }
 
+
+
+.selection-menu {
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px
+}
+
+.card {
+    border: 1px solid blue;
+    padding: 20px;
+    width: fit-content;
+}
+
+.preview-img {
+    height: 200px;
+    width: auto;
+}
