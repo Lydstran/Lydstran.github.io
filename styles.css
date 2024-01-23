@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: 'Playpen Sans', cursive;
-    background-color: #cbb89d;
+    font-family: 'EB Garamond', serif;
+    background-color: #FFE3BF;
 }
 
 .nav {
@@ -12,19 +12,20 @@ body {
     align-items: center;
     padding: 25px;
     height: 35px;
-    background-color: #6A6F4c;
+    background-color: #B7B070;
 }
 
 footer {
+    position: absolute;
+    bottom: 0;
     display: flex;
-    background-color: #4d626f;
     align-items: center;
     gap: 25px;
     padding: 25px;
 }
 
 .name, .about-me, .linkedin, .email {
-    color: white;
+    color: #2A304A;
     text-decoration: none;
 }
 
@@ -46,7 +47,6 @@ footer {
 }
 
 
-
 .selection-menu {
     padding: 25px;
     display: flex;
@@ -55,12 +55,18 @@ footer {
 }
 
 .card {
-    border: 1px solid blue;
-    padding: 20px;
+    border: 1px solid #2A304A;
+    padding: 10px;
     width: fit-content;
+    justify-content: center;
+    align-content: center;
 }
 
 .preview-img {
     height: 200px;
     width: auto;
+}
+
+.preview-title {
+    color: #2A304A;
 }
