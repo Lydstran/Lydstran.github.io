@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background: #F9EAE1;
+    font-family: 'EB Garamond', serif;
+}
+
+header {
+    background: #8A5657;
+    height: 66px;
+}
+
+header * {
+    color: #F9EAE1;
+}
+
+header .logo {
+    float: left;
+    height: inherit;
+    margin-left: 2em;
+}
+
+header .logo-text {
+    margin: 15px;
+    font-family: 'Yeseva One', serif;
+}
+
+header .logo-text span {
+    color: #CC8B86;
+}
+
+header .nav {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+header .nav li {
+    float: left;
+}
+
+header .nav li a {
+    display: block;
+    padding: 21px;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+header .nav li a:hover {
+    background: #6b4243;
+    transition: 0.5s;
+}
+
+header .menu-toggle {
+    display: none;
+}
+
+footer {
+    background: #AA998F;
+    height: 66px;
+    position: static;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    width: 100%;
+    padding: 20px ;
+}
+
+footer p {
+    text-decoration: none;
+    color: black;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 750px){
+    header {
+        position: relative;
+    }
+    header .nav {
+        width: 100%;
+        background: #CC8B86;
+        max-height: 0px;
+        overflow: hidden;
+    }
+    .showing {
+        max-height: 100em;
+    }
+    header .nav li {
+        width: 100%;
+    }
+    header .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 1.9em;
+    }
+    header .logo {
+        margin-left: .5em;
+    }
+    
+    header .logo-text {
+        font-size: 1.5em;
+        margin: 20px;
+    }
+}
+
+.page ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+}
+
+.page ul li {
+    float: left;
+}
+
+.card {
+    width: fit-content;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-title {
+    margin-left: 20px;
+}
+
+.card img {
+    width: 200px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h3 {
+    padding: 0;
+}
