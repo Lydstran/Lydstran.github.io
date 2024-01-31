@@ -12,6 +12,7 @@ body {
 header {
     background: #8A5657;
     height: 66px;
+    text-decoration: none;
 }
 
 header * {
@@ -27,6 +28,10 @@ header .logo {
 header .logo-text {
     margin: 15px;
     font-family: 'Yeseva One', serif;
+}
+
+header .logo-text a {
+    text-decoration: none;
 }
 
 header .logo-text span {
