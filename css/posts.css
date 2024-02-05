@@ -7,6 +7,10 @@ body {
     margin: 0px;
     background: #F9EAE1;
     font-family: 'EB Garamond', serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 header {
@@ -70,15 +74,16 @@ footer {
     height: 66px;
     position: static;
     display: flex;
+    justify-content: space-between;
     gap: 25px;
     align-items: center;
     width: 100%;
     padding: 20px ;
 }
 
-footer p {
+footer p, footer a {
     text-decoration: none;
-    color: black;
+    color: #F9EAE1;
 }
 
 /* MEDIA QUERIES */
