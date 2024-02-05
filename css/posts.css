@@ -7,8 +7,8 @@ body {
     margin: 0px;
     background: #F9EAE1;
     font-family: 'EB Garamond', serif;
-    display: flex;
     min-height: 100vh;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -32,6 +32,7 @@ header .logo {
 header .logo-text {
     margin: 15px;
     font-family: 'Yeseva One', serif;
+    text-decoration: none;
 }
 
 header .logo-text a {
@@ -70,15 +71,16 @@ header .menu-toggle {
 }
 
 footer {
-    background: #AA998F;
-    height: 66px;
-    position: static;
     display: flex;
     justify-content: space-between;
-    gap: 25px;
+    background: #AA998F;
+    height: 66px;
+    position: relative;
+    bottom: 0;
+    gap: 10px;
     align-items: center;
     width: 100%;
-    padding: 20px ;
+    padding: 0 20px;
 }
 
 footer p, footer a {
@@ -91,18 +93,7 @@ footer p, footer a {
     header {
         position: relative;
     }
-    header .nav {
-        width: 100%;
-        background: #CC8B86;
-        max-height: 0px;
-        overflow: hidden;
-    }
-    .showing {
-        max-height: 100em;
-    }
-    header .nav li {
-        width: 100%;
-    }
+    
     header .menu-toggle {
         display: block;
         position: absolute;
@@ -117,6 +108,35 @@ footer p, footer a {
     header .logo-text {
         font-size: 1.5em;
         margin: 20px;
+    }
+
+    #hamburger-nav {
+        display: none;
+        position: fixed;
+        top: 65px;
+        background-color: #8A5657;
+        margin: 0;
+        width: 100%;
+        justify-content: center;
+        list-style: none;
+        flex-direction: column;
+        gap: 2px;
+        padding: 5px;
+    }
+    
+    #hamburger-nav li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #hamburger-nav li a {
+        text-decoration: none;
+        font-size: 1.5em;
+        width: 100%;
+        align-content: center;
+        justify-content: center;
+        background: #6b4243;
     }
 }
 
