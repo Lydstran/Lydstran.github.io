@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- "https://i.pinimg.com/474x/8f/c3/cd/8fc3cdfa3457cc469a1f965fffbb76dc.jpg" -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,700&family=Yeseva+One&display=swap" rel="stylesheet">
 
     <!--Custom Styling-->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/posts.css">
 
     <title>Lydia Stranathan</title>
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -27,24 +26,37 @@
         <ul class="nav">
             <li><a href="/index.html">Home</a></li>
             <li><a href="/html/about.html">About</a></li>
-            <li><a href="/html/contact.html">Contact</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
-        
+    </header>
+
     <!--JQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <!--Custom Script-->
     <script src="js/scripts.js"></script>
 
-    </header>
-    
-    <div class="page">
-        <h1 class="card-title">Posts</h1>
-        <ul class="card-holder">
-            <li><div class="card"><a href="/html/w1.html"><img src="/pictures/first week/building2.JPG"><h3>First Week in Sweden</h3><p>Jan. 24 ~ 6 minute read</p></a></div></li>
-            <li><div class="card"><a href="/html/croatia-solvinia.html"><img src="/pictures/croatia-solvinia/ljubliana.jpg"><h3>Trip to Croatia/Solvinia</h3><p>Jan. 31 ~ 4 minute read</p></a></div></li>
-            <li><div class="card"><a href="/html/branno-hike.html"><img src="/pictures/branno-hike/overlook.JPG"><h3>ESN Bränno Hike</h3><p>Feb. 4 ~ 2 minute read</p></a></div></li>  
-        </ul>
+    <div class="body">
+        <h1>Contact Me!</h1>
+        <form class="row-g3">
+            <div class="col-md-6">
+                <label for="firstName" class="form-label">First Name</label> 
+                <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="col-md-6">
+                <label for="lastName" class="form-label">Last Name</label> 
+                <input type="text" class="form-control" id="lastName" required>
+            </div>
+            <div class="col-md-8">
+                <label for="emailInfo" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="emailInfo" required>
+            </div>
+            <div class="col-md-12">
+                <label for="comments" class="form-label">Message</label>
+                <textarea class="form-control" id="comments" rows="3"></textarea>
+            </div>
+        </form>
+        
     </div>
 
     <footer class="feet">

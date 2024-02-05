@@ -7,6 +7,9 @@ body {
     margin: 0px;
     background: #F9EAE1;
     font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -28,6 +31,7 @@ header .logo {
 header .logo-text {
     margin: 15px;
     font-family: 'Yeseva One', serif;
+    text-decoration: none;
 }
 
 header .logo-text a {
@@ -68,12 +72,12 @@ header .menu-toggle {
 footer {
     background: #AA998F;
     height: 66px;
-    position: static;
-    display: flex;
-    gap: 25px;
+    position: relative;
+    bottom: 0;
+    gap: 10px;
     align-items: center;
     width: 100%;
-    padding: 20px ;
+    padding-left: 20px;
 }
 
 footer p {
@@ -128,25 +132,33 @@ footer p {
 
 .card {
     width: fit-content;
-    margin-left: 30px;
+    margin-left: 40px;
     margin-bottom: 20px;
     text-align: center;
+    padding: 0;
 }
 
 .card-title {
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 .card img {
     width: 200px;
     border: 3px solid #CC8B86;
+    padding: 0;
 }
 
-a {
+.page a {
     text-decoration: none;
     color: black;
 }
 
 h3 {
     padding: 0;
+    margin-top: 0;
+}
+
+.card-holder p {
+    margin-top: -20px;
+    font-size: .8em;
 }
