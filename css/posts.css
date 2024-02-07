@@ -181,5 +181,6 @@ figure video {
 @media only screen and (max-width: 750px) {
     figure {
         float: none;
+        margin-left: -30px;
     }
 }
