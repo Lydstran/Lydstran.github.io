@@ -28,7 +28,7 @@
             <ul id="hamburger-nav" class="nav">
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/html/about.html">About</a></li>
-                <li><a href="/html/contact.html">Contact</a></li>
+                <li><a href="/contact-page/contact.html">Contact</a></li>
             </ul>
          
             
@@ -41,35 +41,15 @@
         </header>
         <div class="body">
             <h1>Contact Me!</h1>
-            <form class="row-g3" action="https://formsubmit.co/fada447634d8511244eadda6a8ebcfa5" method="POST">
-                <!--Honeypot-->
-                <input type="text" name="_honey" style="display: none;">
-
-                <!--Disable Captcha-->
-                <input type="hidden" name="_captcha" value="false">
-
-                <input type="hidden" name="_next" value="https://lydia.cltnc.us/html/success.html">
-                
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label">First Name</label> 
-                    <input type="text" class="form-control" name="name" id="firstName" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="lastName" class="form-label">Last Name</label> 
-                    <input type="text" class="form-control" name="Last&nbsp;Name" id="lastName" required>
-                </div>
-                <div class="col-md-8">
-                    <label for="emailInfo" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" name="email" id="emailInfo" required>
-                </div>
-                <div class="col-md-12">
-                    <label for="comments" class="form-label">Message</label>
-                    <textarea class="form-control" name="message" id="comments" rows="3" required></textarea>
-                </div>
-                <div class="col-md-12">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+                <form action="/contact-page/process_form.php" method="post">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" required></textarea><br>
+                    <input type="submit" value="Submit">
+                </form>
         </div>
     </div>
 
