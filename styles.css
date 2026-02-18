@@ -1,0 +1,379 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --base-size: 16px;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 1.2;
+    font-size: 0.95rem;
+    font-weight: 400;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: pageFadeIn 1s forwards;
+    width: 100%;
+    position: relative;
+}
+
+@keyframes pageFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem 7rem 3rem 7rem;
+    text-align: center;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.sidebar-content {
+    pointer-events: auto;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
+
+.logo img {
+    max-width: 120px;
+    height: auto;
+}
+
+h1 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+    font-weight: 200;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 2rem;
+    display: block;
+    flex-direction: row;
+}
+
+h1 .name {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    display: block;
+    white-space: nowrap;
+}
+
+h1 .subtitle {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-top: 0rem;
+    display: block;
+}
+
+nav {
+    margin-bottom: auto;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav a {
+    display: block;
+    margin: 0 0 1.5rem 0;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 1.3rem;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+nav a.active {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.contact-info {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.contact-info a {
+    color: rgba(0, 0, 0, 0.85);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.25);
+}
+
+.contact-info a:hover {
+    opacity: 0.7;
+}
+
+.language-selector {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Main Content */
+main {
+    margin-left: 25%;
+    width: 75%;
+    padding: 0.5rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.content-wrapper {
+    max-width: 95%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 2rem 2rem;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.gallery-item.landscape {
+    grid-column: span 2;
+}
+
+.gallery-item.portrait {
+}
+
+.gallery-item.square {
+}
+
+/* Gallery wall variations */
+.gallery-item.tall {
+    grid-row: span 2;
+}
+
+.gallery-item.wide {
+    grid-column: span 2;
+}
+
+.gallery-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item:hover {
+    transform: scale(0.98);
+}
+
+@media (max-width: 640px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+    
+    .gallery-item.landscape,
+    .gallery-item.tall,
+    .gallery-item.wide,
+    .gallery-item.large {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+/* Footer Clock */
+footer {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 1rem;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.95rem;
+    pointer-events: none;
+    z-index: 998;
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-photo {
+    float: left;
+    width: 300px;
+    max-width: 100%;
+    margin: 0 2rem 1.5rem 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.about-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-text {
+    text-align: left;
+}
+
+.about-text h2 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 0.25rem;
+    text-align: left;
+    clear: none;
+}
+
+.about-text p {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.about-text strong {
+    font-weight: 500;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 1rem;
+        border-bottom: 0.1rem solid rgba(0, 0, 0, 0.15);
+    }
+    
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    nav {
+        margin-bottom: 1.5rem;
+    }
+    
+    nav a {
+        display: inline;
+        margin: 0 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .contact-info {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+    
+    .content-wrapper {
+        max-width: 100%;
+    }
+    
+    footer {
+        position: relative;
+        margin-top: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .about-section {
+        padding: 2rem 0;
+    }
+    
+    .about-photo {
+        float: none;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto 2rem auto;
+    }
+    
+    .about-text h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}

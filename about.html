@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Lydia Stranathan Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <h1>
+                <span class="name">Lydia Stranathan</span>
+                <span class="subtitle">Photography</span>
+            </h1>
+            
+            <nav>
+                <a href="portfolio.html">portfolio</a>
+                <a href="about.html" class="active">about</a>
+                <a href="#services">services</a>
+                <a href="#contact">contact</a>
+            </nav>
+            
+            <div class="contact-info">
+                <div>lydia@cltnc.us <br> <a href="https://www.instagram.com/lydiastranathan/" target="_blank">instagram</a></div>
+            </div>
+        </div>
+    </aside>
+    
+    <div class="page">
+        <!-- Main Content -->
+        <main>
+            <div class="content-wrapper">
+                <div class="about-section">
+                    <div class="about-photo">
+                        <img src="images/Lydia2022-16.jpg" alt="Lydia Stranathan">
+                    </div>
+                    <div class="about-text">
+                        <h2>About Me</h2>
+                        <p>
+                            Hello! I am Lydia Stranathan, a photographer based in Chapel Hill, NC, 
+                            and I am a Master's in City and Regional Planning student at UNC-Chapel Hill.
+                        </p>
+                        <p>
+                            I started taking photos in high school and loved getting to take people's senior photos.
+                            I would describe my style as a mix of candid and posed, with a clean and timeless editing style.
+                        </p>
+                        <p>
+                            In my free time, I enjoy traveling, spending time outdoors, cooking/baking, and learning how to make websites like this one! 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer with Clock -->
+        <footer>
+            <span id="time-display">evening of the seventeenth   7:50:35 PM</span>
+        </footer>
+    </div>
+    
+    <script>
+        // Dynamic clock update
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const period = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            
+            const day = now.getDate();
+            const ordinalSuffix = (d) => {
+                if (d > 3 && d < 21) return 'th';
+                switch (d % 10) {
+                    case 1: return 'st';
+                    case 2: return 'nd';
+                    case 3: return 'rd';
+                    default: return 'th';
+                }
+            };
+            
+            const timeOfDay = hours < 12 ? 'morning' : hours < 17 ? 'afternoon' : 'evening';
+            const ordinal = day + ordinalSuffix(day);
+            
+            const timeString = `${timeOfDay} of the ${ordinal}   ${displayHours}:${minutes}:${seconds} ${period}`;
+            document.getElementById('time-display').textContent = timeString;
+        }
+        
+        // Update clock immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
