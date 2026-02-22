@@ -42,17 +42,19 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 30%;
+    width: 25%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3rem 3rem 3rem 5rem;
+    padding: 3rem 5rem 3rem 5rem;
     text-align: center;
     pointer-events: none;
     z-index: 999;
     overflow: hidden;
+    background-color: #918868ff;
+    color: #f8f6ec;
 }
 
 .sidebar-content {
@@ -63,6 +65,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 0 1.5rem;
+    color: #f8f6ec;
 }
 
 .logo {
@@ -84,18 +87,20 @@ h1 {
 
 h1 .name {
     font-family: 'Pinyon Script', cursive;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 400;
     display: block;
     white-space: nowrap;
+    color: #f8f6ec;
 }
 
 h1 .subtitle {
     font-family: 'Pinyon Script', cursive;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
     margin-top: 0rem;
     display: block;
+    color: #f8f6ec;
 }
 
 nav {
@@ -111,18 +116,18 @@ nav a {
     display: block;
     margin: 0 0 1.5rem 0;
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.85);
-    font-size: 1.3rem;
+    color: #f8f6ec;
+    font-size: 1rem;
     font-style: italic;
     transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: rgba(0, 0, 0, 0.4);
+    color: #f8f6eccc;
 }
 
 nav a.active {
-    color: rgba(0, 0, 0, 0.4);
+    color: #f8f6ec;
 }
 
 .contact-info {
@@ -133,9 +138,9 @@ nav a.active {
 }
 
 .contact-info a {
-    color: rgba(0, 0, 0, 0.85);
+    color: #f8f6ec;
     text-decoration: underline;
-    text-decoration-color: rgba(0, 0, 0, 0.25);
+    text-decoration-color: rgba(250, 232, 235, 0.4);
 }
 
 .contact-info a:hover {
@@ -461,7 +466,7 @@ footer {
         width: 100%;
         height: auto;
         padding: 1.5rem 1rem;
-        border-bottom: 0.1rem solid rgba(0, 0, 0, 0.15);
+        border-bottom: 0.1rem solid rgba(248, 246, 236, 0.3);
     }
     
     h1 {
@@ -482,7 +487,7 @@ footer {
     .contact-info {
         margin-top: 1.5rem;
         padding-top: 1.5rem;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(248, 246, 236, 0.3);
     }
     
     main {
