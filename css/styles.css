@@ -127,7 +127,7 @@ nav a:hover {
 }
 
 nav a.active {
-    color: #f8f6ec;
+    color: #f8f6eccc;
 }
 
 .contact-info {
@@ -190,6 +190,7 @@ main {
     transition: transform 0.3s ease;
     cursor: pointer;
     min-height: 200px;
+    border-radius: 4px;
 }
 
 .gallery-item img {
@@ -332,6 +333,8 @@ footer {
 .pricing-image {
     width: 45%;
     max-width: 300px;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .pricing-image img {
