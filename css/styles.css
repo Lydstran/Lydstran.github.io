@@ -1,0 +1,587 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --base-size: 16px;
+    /* Embedded cursive L logo as data URI */
+    --logo-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M40 8 C32 8 28 16 30 28 C32 40 30 55 28 70 C27 78 30 85 40 85 L70 85 C78 85 85 82 88 88 C90 92 86 95 80 93 C74 91 65 90 55 90 C45 90 35 92 28 88 C18 82 18 70 22 55 C26 40 25 25 22 15 C20 8 25 3 35 5 C42 6 45 12 42 18 C39 24 34 20 40 8' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+body {
+    background-color: #f8f6ec;
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 1.2;
+    font-size: 0.95rem;
+    font-weight: 400;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.page {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: pageFadeIn 1s forwards;
+    width: 100%;
+    position: relative;
+}
+
+@keyframes pageFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 3rem 3rem 5rem;
+    text-align: center;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.sidebar-content {
+    pointer-events: auto;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    font-family: 'Allura', cursive;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+h1 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+    font-weight: 200;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 2rem;
+    display: block;
+    flex-direction: row;
+}
+
+h1 .name {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    display: block;
+    white-space: nowrap;
+}
+
+h1 .subtitle {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-top: 0rem;
+    display: block;
+}
+
+nav {
+    margin-bottom: auto;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav a {
+    display: block;
+    margin: 0 0 1.5rem 0;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 1.3rem;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+nav a.active {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.contact-info {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.contact-info a {
+    color: rgba(0, 0, 0, 0.85);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.25);
+}
+
+.contact-info a:hover {
+    opacity: 0.7;
+}
+
+.language-selector {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Main Content */
+main {
+    margin-left: 25%;
+    width: 75%;
+    padding: 0.5rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.content-wrapper {
+    max-width: 85%;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 4rem 2rem;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.gallery-item.landscape {
+    grid-column: span 2;
+}
+
+.gallery-item.portrait {
+}
+
+.gallery-item.square {
+}
+
+/* Gallery wall variations */
+.gallery-item.tall {
+    grid-row: span 2;
+}
+
+.gallery-item.wide {
+    grid-column: span 2;
+}
+
+.gallery-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item:hover {
+    transform: scale(0.98);
+}
+
+@media (max-width: 640px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+    }
+    
+    .gallery-item.landscape,
+    .gallery-item.tall,
+    .gallery-item.wide,
+    .gallery-item.large {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+/* Footer Clock */
+footer {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 1rem;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.95rem;
+    pointer-events: none;
+    z-index: 998;
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-photo {
+    float: left;
+    width: 300px;
+    max-width: 100%;
+    margin: 0 2rem 1.5rem 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.about-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-text {
+    text-align: left;
+}
+
+.about-text h2 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 0.25rem;
+    text-align: left;
+    clear: none;
+}
+
+.about-text p {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.about-text strong {
+    font-weight: 500;
+}
+
+/* Services/Pricing Section */
+.services-section {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    width: 100%;
+}
+
+.pricing-block {
+    margin-bottom: 4rem;
+    overflow: hidden;
+}
+
+.pricing-block h2 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+/* Image positioning for text wrapping */
+.pricing-image {
+    width: 45%;
+    max-width: 300px;
+}
+
+.pricing-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Left-aligned: image floats left, text on right */
+.pricing-block.align-left .pricing-image {
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-block.align-left .pricing-content {
+    text-align: left;
+}
+
+/* Right-aligned: image floats right, text on left */
+.pricing-block.align-right .pricing-image {
+    float: right;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-block.align-right .pricing-content {
+    text-align: right;
+}
+
+.pricing-block.align-right h2 {
+    text-align: right;
+}
+
+.pricing-block.align-right .pricing-list {
+    text-align: right;
+}
+
+.pricing-block.align-right .pricing-list li {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+.pricing-block.align-right .pricing-list li::before {
+    left: auto;
+    right: 0;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.pricing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.pricing-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.pricing-list li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.price {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.85);
+    margin-top: 1rem;
+}
+
+.pricing-block.align-right .price {
+    text-align: right;
+}
+
+.pricing-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pricing-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.pricing-note {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.pricing-note p {
+    margin-bottom: 1rem;
+}
+
+/* Embedded Form */
+.form-embed {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 640px;
+}
+
+.form-embed iframe {
+    border: none;
+    max-width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 1rem;
+        border-bottom: 0.1rem solid rgba(0, 0, 0, 0.15);
+    }
+    
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    nav {
+        margin-bottom: 1.5rem;
+    }
+    
+    nav a {
+        display: inline;
+        margin: 0 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .contact-info {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+    
+    .content-wrapper {
+        max-width: 100%;
+    }
+    
+    footer {
+        position: relative;
+        margin-top: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .about-section {
+        padding: 2rem 0;
+    }
+    
+    .about-photo {
+        float: none;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto 2rem auto;
+    }
+    
+    .about-text h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    /* Services Mobile */
+    .services-section {
+        padding: 2rem 0;
+    }
+
+    .pricing-block h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .pricing-image {
+        float: none;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 1.5rem auto;
+    }
+
+    .pricing-block.align-left .pricing-image,
+    .pricing-block.align-right .pricing-image {
+        float: none;
+        margin: 0 auto 1.5rem auto;
+    }
+
+    .pricing-block.align-right h2,
+    .pricing-block.align-right .price {
+        text-align: center;
+    }
+
+    .pricing-block.align-right .pricing-content {
+        text-align: center;
+    }
+
+    .pricing-block.align-right .pricing-list {
+        text-align: left;
+    }
+
+    .pricing-block.align-right .pricing-list li {
+        padding-left: 1.5rem;
+        padding-right: 0;
+    }
+
+    .pricing-block.align-right .pricing-list li::before {
+        left: 0;
+        right: auto;
+    }
+
+    .pricing-content {
+        text-align: center;
+    }
+
+    .pricing-list {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .pricing-images {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-note {
+        text-align: center;
+    }
+}
