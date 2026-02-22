@@ -572,8 +572,7 @@ footer {
     }
 
     .pricing-block.align-right .pricing-list li::before {
-        left: 0;
-        right: auto;
+        display: none;
     }
 
     .pricing-content {
@@ -581,8 +580,17 @@ footer {
     }
 
     .pricing-list {
-        display: inline-block;
-        text-align: left;
+        display: block;
+        text-align: center;
+    }
+
+    .pricing-list li {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .pricing-list li::before {
+        display: none;
     }
 
     .pricing-images {
