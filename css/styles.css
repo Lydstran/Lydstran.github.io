@@ -553,24 +553,33 @@ footer {
         margin: 0 auto 1.5rem auto;
     }
 
-    .pricing-block.align-right h2,
-    .pricing-block.align-right .price {
+    .pricing-block.align-left h2,
+    .pricing-block.align-right h2 {
         text-align: center;
     }
 
+    .pricing-block.align-left .pricing-content,
     .pricing-block.align-right .pricing-content {
         text-align: center;
     }
 
-    .pricing-block.align-right .pricing-list {
-        text-align: left;
+    .pricing-block.align-left .price,
+    .pricing-block.align-right .price {
+        text-align: center;
     }
 
+    .pricing-block.align-left .pricing-list,
+    .pricing-block.align-right .pricing-list {
+        text-align: center;
+    }
+
+    .pricing-block.align-left .pricing-list li,
     .pricing-block.align-right .pricing-list li {
-        padding-left: 1.5rem;
+        padding-left: 0;
         padding-right: 0;
     }
 
+    .pricing-block.align-left .pricing-list li::before,
     .pricing-block.align-right .pricing-list li::before {
         display: none;
     }
