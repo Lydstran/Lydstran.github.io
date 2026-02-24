@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Preload hero image for faster initial load -->
+    <link rel="preload" as="image" href="images/BridgetMockGrad.jpg" fetchpriority="high">
 </head>
 <body>
     <!-- Sidebar Navigation -->
@@ -38,92 +40,94 @@
         <main>
             <div class="content-wrapper">
                 <div class="gallery">
+                    <!-- Above-the-fold images: high priority, eager loading -->
                     <div class="gallery-item portrait">
-                        <img src="images/BridgetMockGrad.jpg" alt="Bridget Graduation Photo">
+                        <img src="images/BridgetMockGrad.jpg" alt="Bridget Graduation Photo" fetchpriority="high" loading="eager">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/BridgetMockGrad2.jpg" alt="Bridget Graduation Photo">
+                        <img src="images/BridgetMockGrad2.jpg" alt="Bridget Graduation Photo" fetchpriority="high" loading="eager">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/BridgetHeadshot2.jpg" alt="Bridget Graduation Photo">
+                        <img src="images/BridgetHeadshot2.jpg" alt="Bridget Graduation Photo" fetchpriority="high" loading="eager">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/BridgetHeadshot.jpg" alt="Bridget Graduation Photo">
+                        <img src="images/BridgetHeadshot.jpg" alt="Bridget Graduation Photo" fetchpriority="high" loading="eager">
                     </div>
+                    <!-- Below-the-fold images: lazy loading, async decoding -->
                     <div class="gallery-item landscape">
-                        <img src="images/ThayerHeadshot.jpg" alt="Thayer's Headshot">
+                        <img src="images/ThayerHeadshot.jpg" alt="Thayer's Headshot" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Kate2020-07.JPEG" alt="Kate Graduation Photo">
+                        <img src="images/Kate2020-07.JPEG" alt="Kate Graduation Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Justinheadshot.jpg" alt="Justin's Headshot">
+                        <img src="images/Justinheadshot.jpg" alt="Justin's Headshot" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Melia_SeniorPhoto.jpg" alt="Melia's Senior Photo">
+                        <img src="images/Melia_SeniorPhoto.jpg" alt="Melia's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Catherine2.jpg" alt="Catherine's Senior Photo">
+                        <img src="images/Catherine2.jpg" alt="Catherine's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item landscape wide">
-                        <img src="images/Guat_Landscape.jpg" alt="Guatemala Landscape">
+                        <img src="images/Guat_Landscape.jpg" alt="Guatemala Landscape" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/kajob1.jpg" alt="Kate and Jacob Engagement Photo">
+                        <img src="images/kajob1.jpg" alt="Kate and Jacob Engagement Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/kajob2.jpg" alt="Kate and Jacob Engagement Photo">
+                        <img src="images/kajob2.jpg" alt="Kate and Jacob Engagement Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/family1-2.jpg" alt="Peelers Family Photo">
+                        <img src="images/family1-2.jpg" alt="Peelers Family Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/claira 1.jpg" alt="Claira's Senior Photo">
+                        <img src="images/claira 1.jpg" alt="Claira's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item landscape">
-                        <img src="images/Mountains1.JPG" alt="Mountain Landscape">
+                        <img src="images/Mountains1.JPG" alt="Mountain Landscape" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Kate2020-11.JPEG" alt="Kate's Senior Photo">
+                        <img src="images/Kate2020-11.JPEG" alt="Kate's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Mason_SeniorPhoto.jpg" alt="Mason's Senior Photo">
+                        <img src="images/Mason_SeniorPhoto.jpg" alt="Mason's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/thayer1.jpg" alt="Thayer's Senior Photo">
+                        <img src="images/thayer1.jpg" alt="Thayer's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/conor1.jpg" alt="Conor's Senior Photo">
+                        <img src="images/conor1.jpg" alt="Conor's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item landscape">
-                        <img src="images/Stockholm_buildings.jpg" alt="Stockholm Landscape">
+                        <img src="images/Stockholm_buildings.jpg" alt="Stockholm Landscape" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Cale.jpg" alt="Cale's Senior Photo">
+                        <img src="images/Cale.jpg" alt="Cale's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Ellie1.jpg" alt="Ellie's Senior Photo">
+                        <img src="images/Ellie1.jpg" alt="Ellie's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/olivia1.jpg" alt="Olivia's Senior Photo">
+                        <img src="images/olivia1.jpg" alt="Olivia's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/melia2.jpg" alt="Melia's Senior Photo">
+                        <img src="images/melia2.jpg" alt="Melia's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item landscape">
-                        <img src="images/Enchantedrock1.jpeg" alt="Landscape of Enchanted Rock">
+                        <img src="images/Enchantedrock1.jpeg" alt="Landscape of Enchanted Rock" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Avery_SeniorPhoto.jpg" alt="Avery's Senior Photo">
+                        <img src="images/Avery_SeniorPhoto.jpg" alt="Avery's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/avery2.JPG" alt="Avery's Senior Photo">
+                        <img src="images/avery2.JPG" alt="Avery's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/Cale2.jpg" alt="Cale's Senior Photo">
+                        <img src="images/Cale2.jpg" alt="Cale's Senior Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="gallery-item portrait">
-                        <img src="images/olivia 2.jpg" alt="Olivia's Headshot">
+                        <img src="images/olivia 2.jpg" alt="Olivia's Headshot" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
