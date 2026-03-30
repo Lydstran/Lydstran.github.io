@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katherine Ryan - Photo Gallery | Lydia Stranathan Photography</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/LydiaIcon.svg">
+    <link rel="apple-touch-icon" href="../assets/LydiaIcon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Client Gallery Styles */
+        .client-header {
+            text-align: center;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .client-header h2 {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.85);
+            margin-bottom: 0.5rem;
+        }
+
+        .client-header p {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 1rem 2rem 2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #918868;
+            color: #f8f6ec;
+            padding: 1rem 2.5rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #7a7358;
+            transform: translateY(-2px);
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .client-gallery {
+            column-count: 3;
+            column-gap: 4px;
+            padding: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .client-gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 4px;
+            break-inside: avoid;
+        }
+
+        .client-gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .client-gallery-item:hover img {
+            transform: scale(1.03);
+            filter: brightness(1.05);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #f8f6ec;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.7;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f8f6ec;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            opacity: 0.7;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .gallery-note {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .client-gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .client-gallery {
+                column-count: 2;
+                column-gap: 3px;
+                padding: 0.5rem;
+            }
+
+            .client-gallery-item {
+                margin-bottom: 3px;
+            }
+
+            .client-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .download-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <h1>
+                <span class="name">Lydia Stranathan</span>
+                <span class="subtitle">Photography</span>
+            </h1>
+            
+            <nav>
+                <a href="../index.html">portfolio</a>
+                <a href="../about.html">about</a>
+                <a href="../services.html">services</a>
+                <a href="https://forms.gle/VeiJUKYVcTeQzVUe9" target="_blank">interest form</a>
+            </nav>
+            
+            <div class="contact-info">
+                <div>lydia@cltnc.us <br> <a href="https://www.instagram.com/lydiastranathan/" target="_blank">instagram</a></div>
+            </div>
+        </div>
+    </aside>
+    
+    <div class="page">
+        <main>
+            <div class="content-wrapper" style="display: block; max-width: 100%;">
+                <!-- Client Header -->
+                <div class="client-header">
+                    <h2>Kat's Gallery</h2>
+                    <p>Thank you for choosing Lydia Stranathan Photography!</p>
+                    <p>I loved getting to take your grad photos! I hope you have an amazing rest of your senior semester!</p>
+                    <p>Below are preview photos from the session and full resolution photos are available for download via the button.</p>
+                    <p>This link and the download folder will be available for the next <b>30 days</b>.<br>Please copy the photos to your personal device before they expire.</b></p>
+                </div>
+
+                <!-- Download Section -->
+                <div class="download-section">
+                    <a href="https://drive.google.com/drive/folders/18hOS7FcYgxq8oMf-S4Bu3k4byzajFSeb?usp=sharing" target="_blank" class="download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/>
+                        </svg>
+                        Download Full Resolution Photos
+                    </a>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="client-gallery">
+                    <div class="client-gallery-item" onclick="openLightbox(0)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-1.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(1)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-2.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(2)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-3.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(3)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-4.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(4)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-5.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(5)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-6.jpg" alt="Katherine
+                        's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(6)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-7.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(7)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-8.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(8)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-9.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(9)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-10.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(10)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-11.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(11)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-12.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(12)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-13.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(13)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-14.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(14)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-15.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(15)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-16.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(16)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-17.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(17)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-18.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(18)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-19.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(19)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-20.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(20)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-21.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(21)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-22.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(22)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-23.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(23)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-24.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(24)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-25.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(25)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-26.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(26)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-27.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(27)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-28.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(28)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-29.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(29)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-30.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(30)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-31.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(31)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-32.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(32)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-33.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(33)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-34.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(34)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-35.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(35)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-36.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(36)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-37.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(37)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-38.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(38)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-39.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(39)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-40.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(40)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-41.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(41)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-42.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(42)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-43.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(43)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-44.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(44)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-45.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(45)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-46.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(46)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-47.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(47)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-48.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(48)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-49.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(49)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-50.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(50)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-51.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(51)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-52.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(52)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-53.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(53)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-54.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(54)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-55.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(55)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-56.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(56)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-57.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(57)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-58.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(58)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-59.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(59)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-60.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(60)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-61.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(61)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-62.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(62)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-63.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(63)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-64.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(64)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-65.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(65)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-66.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(66)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-67.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(67)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-68.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(68)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-69.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(69)">
+                        <img src="../images/clients/katherine ryan/katherine_unc26-70.jpg" alt="Katherine's Headshot" loading="lazy" decoding="async">
+                    </div>
+                </div>
+
+                <p class="gallery-note">
+                    Click any photo to view larger. For full resolution downloads, use the button above.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Gallery Image" id="lightbox-img">
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</span>
+    </div>
+
+    <script>
+        // Get all gallery images
+        const galleryImages = document.querySelectorAll('.client-gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = galleryImages[index].src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+            if (currentIndex >= galleryImages.length) currentIndex = 0;
+            lightboxImg.src = galleryImages[currentIndex].src;
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Close lightbox when clicking outside image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    </script>
+</body>
+</html>
