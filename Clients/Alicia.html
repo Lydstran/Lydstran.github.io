@@ -63,9 +63,8 @@
         }
 
         .client-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            column-count: 3;
+            column-gap: 1rem;
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -76,13 +75,15 @@
             overflow: hidden;
             border-radius: 4px;
             cursor: pointer;
-            aspect-ratio: 1;
+            break-inside: avoid;
+            margin-bottom: 1rem;
         }
 
         .client-gallery-item img {
+            display: block;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             transition: transform 0.3s ease;
         }
 
@@ -90,16 +91,15 @@
             transform: scale(1.05);
         }
 
-        /* Portrait images span 2 rows */
+        /* Legacy sizing classes are neutralized for masonry columns */
         .client-gallery-item.portrait {
-            grid-row: span 2;
+            grid-row: auto;
             aspect-ratio: auto;
         }
 
-        /* Landscape images span 2 columns */
         .client-gallery-item.landscape {
-            grid-column: span 2;
-            aspect-ratio: 16/9;
+            grid-column: auto;
+            aspect-ratio: auto;
         }
 
         /* Lightbox Styles */
@@ -180,7 +180,7 @@
         /* Mobile Responsive */
         @media (max-width: 900px) {
             .client-gallery {
-                grid-template-columns: repeat(2, 1fr);
+                column-count: 2;
             }
         }
 
@@ -198,16 +198,16 @@
             }
 
             .client-gallery {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
+                column-count: 1;
+                column-gap: 0;
                 padding: 1rem;
             }
 
             .client-gallery-item.portrait,
             .client-gallery-item.landscape {
-                grid-column: span 1;
-                grid-row: span 1;
-                aspect-ratio: 1;
+                grid-column: auto;
+                grid-row: auto;
+                aspect-ratio: auto;
             }
 
             .client-header h2 {
@@ -250,8 +250,8 @@
                 <div class="client-header">
                     <h2>Alicia's Gallery</h2>
                     <p>Thank you for choosing Lydia Stranathan Photography!</p>
-                    <p>Thank you so much for modeling for me! You are so gorgeous inside and out, and I loved how these turned out!</p>
                     <p>Below are preview photos from the session and full resolution photos are available for download via the button.</p>
+                    <p>This link and the download folder will be available for the next <b>30 days</b>.<br>Please copy the photos to your personal device before they expire.</b></p>
                 </div>
 
                 <!-- Download Section -->
@@ -267,153 +267,228 @@
                 <!-- Photo Gallery -->
                 <div class="client-gallery">
                     <div class="client-gallery-item" onclick="openLightbox(0)">
-                        <img src="../images/clients/alicia/LES_6519.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-1.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
-                    <div class="client-gallery-item portrait" onclick="openLightbox(1)">
-                        <img src="../images/clients/alicia/LES_6521.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    <div class="client-gallery-item" onclick="openLightbox(1)">
+                        <img src="../images/clients/alicia/Alicia_unc26-2.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(2)">
-                        <img src="../images/clients/alicia/LES_6523.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-3.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(3)">
-                        <img src="../images/clients/alicia/LES_6524.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-4.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(4)">
-                        <img src="../images/clients/alicia/LES_6534.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-5.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(5)">
-                        <img src="../images/clients/alicia/LES_6540.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-6.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
-                    <div class="client-gallery-item portrait" onclick="openLightbox(6)">
-                        <img src="../images/clients/alicia/LES_6543.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    <div class="client-gallery-item" onclick="openLightbox(6)">
+                        <img src="../images/clients/alicia/Alicia_unc26-7.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(7)">
-                        <img src="../images/clients/alicia/LES_6550.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-8.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(8)">
-                        <img src="../images/clients/alicia/LES_6554.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-9.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(9)">
-                        <img src="../images/clients/alicia/LES_6555.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-10.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(10)">
-                        <img src="../images/clients/alicia/LES_6562.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-11.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
-                    <div class="client-gallery-item portrait" onclick="openLightbox(11)">
-                        <img src="../images/clients/alicia/LES_6568.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    <div class="client-gallery-item" onclick="openLightbox(11)">
+                        <img src="../images/clients/alicia/Alicia_unc26-12.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(12)">
-                        <img src="../images/clients/alicia/LES_6591.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-13.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(13)">
-                        <img src="../images/clients/alicia/LES_6594.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-14.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(14)">
-                        <img src="../images/clients/alicia/LES_6603.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-15.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(15)">
-                        <img src="../images/clients/alicia/LES_6616.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-16.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
-                    <div class="client-gallery-item portrait" onclick="openLightbox(16)">
-                        <img src="../images/clients/alicia/LES_6621.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    <div class="client-gallery-item" onclick="openLightbox(16)">
+                        <img src="../images/clients/alicia/Alicia_unc26-17.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(17)">
-                        <img src="../images/clients/alicia/LES_6630.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-18.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(18)">
-                        <img src="../images/clients/alicia/LES_6642.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-19.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(19)">
-                        <img src="../images/clients/alicia/LES_6648.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-20.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(20)">
-                        <img src="../images/clients/alicia/LES_6650.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-21.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
-                    <div class="client-gallery-item portrait" onclick="openLightbox(21)">
-                        <img src="../images/clients/alicia/LES_6668.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    <div class="client-gallery-item" onclick="openLightbox(21)">
+                        <img src="../images/clients/alicia/Alicia_unc26-22.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(22)">
-                        <img src="../images/clients/alicia/LES_6671.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-23.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(23)">
-                        <img src="../images/clients/alicia/LES_6673.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/Alicia_unc26-24.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(24)">
-                        <img src="../images/clients/alicia/LES_6674.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6617.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(25)">
-                        <img src="../images/clients/alicia/LES_6683.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6519.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item portrait" onclick="openLightbox(26)">
-                        <img src="../images/clients/alicia/LES_6724.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6521.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(27)">
-                        <img src="../images/clients/alicia/LES_6732.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6523.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(28)">
-                        <img src="../images/clients/alicia/LES_6746.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6524.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(29)">
-                        <img src="../images/clients/alicia/LES_6748.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6534.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(30)">
-                        <img src="../images/clients/alicia/LES_6760.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6540.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item portrait" onclick="openLightbox(31)">
-                        <img src="../images/clients/alicia/LES_6763.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6543.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(32)">
-                        <img src="../images/clients/alicia/LES_6769.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6550.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(33)">
-                        <img src="../images/clients/alicia/LES_6775.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6554.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(34)">
-                        <img src="../images/clients/alicia/LES_6786.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6555.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(35)">
-                        <img src="../images/clients/alicia/LES_6789.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6562.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item portrait" onclick="openLightbox(36)">
-                        <img src="../images/clients/alicia/LES_6790.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6568.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(37)">
-                        <img src="../images/clients/alicia/LES_6798.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6591.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(38)">
-                        <img src="../images/clients/alicia/LES_6801.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6594.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(39)">
-                        <img src="../images/clients/alicia/LES_6802.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6603.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(40)">
-                        <img src="../images/clients/alicia/LES_6808.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6616.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item portrait" onclick="openLightbox(41)">
-                        <img src="../images/clients/alicia/LES_6810.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6621.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(42)">
-                        <img src="../images/clients/alicia/LES_6815.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6630.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(43)">
-                        <img src="../images/clients/alicia/LES_6822.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6642.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(44)">
-                        <img src="../images/clients/alicia/LES_6825.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6648.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(45)">
-                        <img src="../images/clients/alicia/LES_6831.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6650.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item portrait" onclick="openLightbox(46)">
-                        <img src="../images/clients/alicia/LES_6836.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6668.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(47)">
-                        <img src="../images/clients/alicia/LES_6840.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6671.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(48)">
-                        <img src="../images/clients/alicia/LES_6852.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                        <img src="../images/clients/alicia/LES_6673.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                     <div class="client-gallery-item" onclick="openLightbox(49)">
+                        <img src="../images/clients/alicia/LES_6674.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(50)">
+                        <img src="../images/clients/alicia/LES_6683.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item portrait" onclick="openLightbox(51)">
+                        <img src="../images/clients/alicia/LES_6724.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(52)">
+                        <img src="../images/clients/alicia/LES_6732.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(53)">
+                        <img src="../images/clients/alicia/LES_6746.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(54)">
+                        <img src="../images/clients/alicia/LES_6748.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(55)">
+                        <img src="../images/clients/alicia/LES_6760.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item portrait" onclick="openLightbox(56)">
+                        <img src="../images/clients/alicia/LES_6763.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(57)">
+                        <img src="../images/clients/alicia/LES_6769.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(58)">
+                        <img src="../images/clients/alicia/LES_6775.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(59)">
+                        <img src="../images/clients/alicia/LES_6786.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(60)">
+                        <img src="../images/clients/alicia/LES_6789.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item portrait" onclick="openLightbox(61)">
+                        <img src="../images/clients/alicia/LES_6790.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(62)">
+                        <img src="../images/clients/alicia/LES_6798.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(63)">
+                        <img src="../images/clients/alicia/LES_6801.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(64)">
+                        <img src="../images/clients/alicia/LES_6802.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(65)">
+                        <img src="../images/clients/alicia/LES_6808.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item portrait" onclick="openLightbox(66)">
+                        <img src="../images/clients/alicia/LES_6810.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(67)">
+                        <img src="../images/clients/alicia/LES_6815.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(68)">
+                        <img src="../images/clients/alicia/LES_6822.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(69)">
+                        <img src="../images/clients/alicia/LES_6825.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(70)">
+                        <img src="../images/clients/alicia/LES_6831.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item portrait" onclick="openLightbox(71)">
+                        <img src="../images/clients/alicia/LES_6836.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(72)">
+                        <img src="../images/clients/alicia/LES_6840.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(73)">
+                        <img src="../images/clients/alicia/LES_6852.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(74)">
                         <img src="../images/clients/alicia/LES_6853.jpg" alt="Alicia Grad Photo" loading="lazy" decoding="async">
                     </div>
                 </div>
