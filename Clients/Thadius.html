@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thadius - Photo Gallery | Lydia Stranathan Photography</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/LydiaIcon.svg">
+    <link rel="apple-touch-icon" href="../assets/LydiaIcon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Client Gallery Styles */
+        .client-header {
+            text-align: center;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .client-header h2 {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.85);
+            margin-bottom: 0.5rem;
+        }
+
+        .client-header p {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 1rem 2rem 2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #918868;
+            color: #f8f6ec;
+            padding: 1rem 2.5rem;
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #7a7358;
+            transform: translateY(-2px);
+        }
+
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .client-gallery {
+            column-count: 3;
+            column-gap: 4px;
+            padding: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .client-gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            margin-bottom: 4px;
+            break-inside: avoid;
+        }
+
+        .client-gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .client-gallery-item:hover img {
+            transform: scale(1.03);
+            filter: brightness(1.05);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #f8f6ec;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            opacity: 0.7;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f8f6ec;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            opacity: 0.7;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .gallery-note {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .client-gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .client-gallery {
+                column-count: 2;
+                column-gap: 3px;
+                padding: 0.5rem;
+            }
+
+            .client-gallery-item {
+                margin-bottom: 3px;
+            }
+
+            .client-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .download-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <h1>
+                <span class="name">Lydia Stranathan</span>
+                <span class="subtitle">Photography</span>
+            </h1>
+            
+            <nav>
+                <a href="../index.html">portfolio</a>
+                <a href="../about.html">about</a>
+                <a href="../services.html">services</a>
+                <a href="https://forms.gle/VeiJUKYVcTeQzVUe9" target="_blank">interest form</a>
+            </nav>
+            
+            <div class="contact-info">
+                <div>lydia@cltnc.us <br> <a href="https://www.instagram.com/lydiastranathan/" target="_blank">instagram</a></div>
+            </div>
+        </div>
+    </aside>
+    
+    <div class="page">
+        <main>
+            <div class="content-wrapper" style="display: block; max-width: 100%;">
+                <!-- Client Header -->
+                <div class="client-header">
+                    <h2>Thadius's Gallery</h2>
+                    <p>Thank you for choosing Lydia Stranathan Photography!</p>
+                    <p>Below are some preview photos from the session and all the full resolution photos are available for download via the button.</p>
+                    <p>This link and the download folder will be available for the next <b>30 days</b>.<br>Please copy the photos to your personal device before they expire.</b></p>
+                </div>
+
+                <!-- Download Section -->
+                <div class="download-section">
+                    <a href="https://drive.google.com/drive/folders/1cbrSrl_SARrqFc7rCZEiI757CN5b9PsW?usp=sharing" target="_blank" class="download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/>
+                        </svg>
+                        Download Full Resolution Photos
+                    </a>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="client-gallery">
+                    <div class="client-gallery-item" onclick="openLightbox(0)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-1.jpg" alt="Thadius portrait photo 1" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(1)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-2.jpg" alt="Thadius portrait photo 2" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(2)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-3.jpg" alt="Thadius portrait photo 3" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(3)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-4.jpg" alt="Thadius portrait photo 4" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(4)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-5.jpg" alt="Thadius portrait photo 5" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(5)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-6.jpg" alt="Thadius portrait photo 6" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(6)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-7.jpg" alt="Thadius portrait photo 7" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(7)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-8.jpg" alt="Thadius portrait photo 8" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(8)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-9.jpg" alt="Thadius portrait photo 9" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(9)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-10.jpg" alt="Thadius portrait photo 10" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(10)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-11.jpg" alt="Thadius portrait photo 11" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(11)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-12.jpg" alt="Thadius portrait photo 12" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(12)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-13.jpg" alt="Thadius portrait photo 13" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(13)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-14.jpg" alt="Thadius portrait photo 14" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(14)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-15.jpg" alt="Thadius portrait photo 15" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(15)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-16.jpg" alt="Thadius portrait photo 16" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(16)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-17.jpg" alt="Thadius portrait photo 17" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(17)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-18.jpg" alt="Thadius portrait photo 18" loading="lazy" decoding="async">
+                    </div>
+                    <div class="client-gallery-item" onclick="openLightbox(18)">
+                        <img src="../images/clients/Thadius/Thadius_unc26-19.jpg" alt="Thadius portrait photo 19" loading="lazy" decoding="async">
+                    </div>
+                </div>
+
+                <p class="gallery-note">
+                    Click any photo to view larger. For full resolution downloads, use the button above.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Gallery Image" id="lightbox-img">
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</span>
+    </div>
+
+    <script>
+        // Get all gallery images
+        const galleryImages = document.querySelectorAll('.client-gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentIndex = 0;
+
+        function updateLightboxImage(index) {
+            currentIndex = index;
+            lightboxImg.src = galleryImages[index].src;
+            lightboxImg.alt = galleryImages[index].alt;
+        }
+
+        function getHashForIndex(index) {
+            return `#photo-${index + 1}`;
+        }
+
+        function openLightbox(index, fromHistory = false) {
+            updateLightboxImage(index);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            if (!fromHistory) {
+                history.pushState(
+                    { lightboxOpen: true, imageIndex: index },
+                    '',
+                    getHashForIndex(index)
+                );
+            }
+        }
+
+        function closeLightbox(fromHistory = false) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+
+            if (!fromHistory && history.state && history.state.lightboxOpen) {
+                history.back();
+            }
+        }
+
+        function navigateLightbox(direction, fromHistory = false) {
+            let nextIndex = currentIndex + direction;
+            if (nextIndex < 0) nextIndex = galleryImages.length - 1;
+            if (nextIndex >= galleryImages.length) nextIndex = 0;
+
+            updateLightboxImage(nextIndex);
+
+            if (!fromHistory) {
+                history.pushState(
+                    { lightboxOpen: true, imageIndex: nextIndex },
+                    '',
+                    getHashForIndex(nextIndex)
+                );
+            }
+        }
+
+        window.addEventListener('popstate', (e) => {
+            const state = e.state;
+            if (state && state.lightboxOpen && Number.isInteger(state.imageIndex)) {
+                openLightbox(state.imageIndex, true);
+            } else {
+                closeLightbox(true);
+            }
+        });
+
+        // Close lightbox on escape key and only navigate while open
+        document.addEventListener('keydown', (e) => {
+            const isOpen = lightbox.classList.contains('active');
+            if (e.key === 'Escape' && isOpen) closeLightbox();
+            if (!isOpen) return;
+
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                navigateLightbox(-1);
+            }
+
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                navigateLightbox(1);
+            }
+        });
+
+        // Close lightbox when clicking outside image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Open from direct hash links like #photo-3
+        const hashMatch = window.location.hash.match(/^#photo-(\d+)$/);
+        if (hashMatch) {
+            const imageNumber = Number.parseInt(hashMatch[1], 10);
+            const indexFromHash = imageNumber - 1;
+            if (indexFromHash >= 0 && indexFromHash < galleryImages.length) {
+                history.replaceState(
+                    { lightboxOpen: true, imageIndex: indexFromHash },
+                    '',
+                    getHashForIndex(indexFromHash)
+                );
+                openLightbox(indexFromHash, true);
+            }
+        }
+    </script>
+</body>
+</html>
